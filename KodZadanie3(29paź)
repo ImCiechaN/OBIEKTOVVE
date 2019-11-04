@@ -1,0 +1,87 @@
+#include <iostream>
+#include <string>
+#include <math.h>
+
+using namespace std;
+
+class Figura { 
+	string kolor;
+	public:
+	virtual double pole()=0;
+	virtual double obwod()=0;
+	void setcolor(string kolor) {
+		this->kolor = kolor;
+	}
+	string getcolor() {
+		return this->kolor;
+	}
+};
+
+class Kolo : public Figura {
+	int promien;
+	public:
+	Kolo(int promien2=0) : promien(promien2) {}
+	
+	void setpromien(int promien) {
+		this->promien = promien;
+	}
+	int getpromien(int promien) {
+		return this->promien;
+	}
+	double pole() {
+		return (this->promien) * (this->promien) *3.14;
+	}	
+	double obwod() {
+		return 2 * 3.14 * this->promien;
+	}
+	double pole2(int a) {
+		return a * a *3.14;
+	}	
+	double obwod2(int a) {
+		return 2 * 3.14 * a;
+	}
+
+};
+
+class Kwadrat : public Figura {
+	int bok;
+	
+	public:
+	Kwadrat(int bok2=0) : bok(bok2) {}
+	
+	void setbok(int bok) {
+		this->bok=bok;
+	}
+	int getbok(int bok) {
+		return this->bok;	
+	}
+	double pole() {
+		return (this->bok) * (this->bok);
+	}
+	double obwod() {
+		return 4 * this->bok;
+	}
+	double pole2(int a) {
+		return a*a;
+	}
+	double obwod2(int a) {
+		return 4 * a;
+	}
+};
+
+int main(void)
+{
+	int a,b;
+	Kwadrat A1;
+	Kolo K1;
+	cout << "Pole kola to: " << A1.pole() << " A jego obwod to: " << A1.obwod() << endl;
+	cout << "Pole Kwadratu to: " << K1.pole() << " A jego obwod to: " << K1.obwod() << endl;
+	K1.setcolor("Niebieski");
+	cout << "Kolor figury to: " << K1.getcolor() << endl;
+	cout << "Podaj bok kwadratu a nastepnie promien" << endl;
+	cin >> a;
+	cin >> b;
+	cout << "Pole kola to: " << A1.pole2(a) << " A jego obwod to: " << A1.obwod2(a) << endl;
+	cout << "Pole Kwadratu to: " << K1.pole2(b) << " A jego obwod to: " << K1.obwod2(b) << endl;
+	return 0;
+}
